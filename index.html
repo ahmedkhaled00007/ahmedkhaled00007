@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Ameen - Data Analyst GitHub Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: #e0e6ed;
+            overflow-x: hidden;
+        }
+        
+        /* Background Effects */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .grid-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(34, 150, 243, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 150, 243, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+        }
+        
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(34, 150, 243, 0.2) 0%, transparent 70%);
+            top: -200px;
+            left: -200px;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(25, 118, 210, 0.15) 0%, transparent 70%);
+            bottom: -100px;
+            right: -100px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header Section */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .wave-emoji {
+            font-size: 48px;
+            display: inline-block;
+            animation: wave 2s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
+        }
+        
+        .main-title {
+            font-size: 56px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .profile-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(34, 150, 243, 0.1);
+            border: 1px solid rgba(34, 150, 243, 0.3);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2196f3;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            background: rgba(34, 150, 243, 0.2);
+            border-color: #2196f3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 150, 243, 0.3);
+        }
+        
+        .badge-number {
+            background: #2196f3;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .social-btn.whatsapp {
+            background: #25d366;
+            color: white;
+        }
+        
+        .social-btn.linkedin {
+            background: #0077b5;
+            color: white;
+        }
+        
+        .social-btn.gmail {
+            background: #ea4335;
+            color: white;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Tech Icons */
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(34, 150, 243, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .tech-icon:hover {
+            background: rgba(34, 150, 243, 0.1);
+            border-color: #2196f3;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(34, 150, 243, 0.3);
+        }
+        
+        /* Main Profile Card */
+        .profile-card {
+            background: linear-gradient(135deg, rgba(15, 25, 50, 0.9) 0%, rgba(10, 15, 35, 0.95) 100%);
+            border: 1px solid rgba(34, 150, 243, 0.2);
+            border-radius: 16px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 1.2s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2196f3, #03a9f4, #2196f3);
+        }
+        
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        /* Avatar Section */
+        .avatar-section {
+            position: relative;
+        }
+        
+        .avatar-wrapper {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin-bottom: 25px;
+        }
+        
+        .avatar-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: 3px solid #2196f3;
+            background: #0a0e27;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 30px rgba(33, 150, 243, 0.4);
+        }
+        
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(50%) brightness(0.9) contrast(1.1);
+            transition: filter 0.4s ease;
+        }
+        
+        .avatar-frame:hover .avatar-image {
+            filter: grayscale(0%) brightness(1) contrast(1);
+        }
+        
+        .avatar-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(33, 150, 243, 0.15) 100%);
+            pointer-events: none;
+        }
+        
+        .status-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            background: #4caf50;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 10px #4caf50;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+        
+        .skill-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 25px;
+        }
+        
+        .skill-item {
+            position: relative;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #9ca3af;
+        }
+        
+        .skill-percentage {
+            color: #2196f3;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .skill-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1976d2, #2196f3, #03a9f4);
+            border-radius: 5px;
+            transition: width 1.5s ease;
+            box-shadow: 0 0 15px rgba(33, 150, 243, 0.6);
+        }
+        
+        /* Info Section */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .name-block {
+            border-left: 4px solid #2196f3;
+            padding-left: 25px;
+        }
+        
+        .name {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .username {
+            font-size: 22px;
+            color: #2196f3;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-size: 20px;
+            color: #9ca3af;
+            font-weight: 600;
+        }
+        
+        .bio {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #b0b7c3;
+        }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(34, 150, 243, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .stat-card:hover {
+            border-color: #2196f3;
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #2196f3;
+            display: block;
+            margin-bottom: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .tech-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(34, 150, 243, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+        }
+        
+        .tech-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tech-title::before {
+            content: '⚡';
+            font-size: 24px;
+        }
+        
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .tech-tag {
+            background: rgba(33, 150, 243, 0.1);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            color: #2196f3;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .tech-tag:hover {
+            background: rgba(33, 150, 243, 0.2);
+            border-color: #2196f3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(33, 150, 243, 0.3);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 60px 0 35px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-header::before {
+            content: '';
+            width: 6px;
+            height: 40px;
+            background: linear-gradient(180deg, #2196f3, #03a9f4);
+            border-radius: 3px;
+        }
+        
+        /* Activity Panel */
+        .activity-panel {
+            background: linear-gradient(135deg, rgba(15, 25, 50, 0.8) 0%, rgba(10, 15, 35, 0.9) 100%);
+            border: 1px solid rgba(34, 150, 243, 0.2);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .activity-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2196f3;
+        }
+        
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(53, 1fr);
+            gap: 4px;
+        }
+        
+        .contrib-cell {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            border-radius: 3px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .contrib-cell:hover {
+            border-color: #2196f3;
+            transform: scale(1.4);
+            z-index: 10;
+            box-shadow: 0 0 12px rgba(33, 150, 243, 0.8);
+        }
+        
+        .contrib-0 { background: rgba(255, 255, 255, 0.03); }
+        .contrib-1 { background: rgba(33, 150, 243, 0.3); }
+        .contrib-2 { background: rgba(33, 150, 243, 0.5); }
+        .contrib-3 { background: rgba(33, 150, 243, 0.7); }
+        .contrib-4 { background: rgba(33, 150, 243, 0.9); box-shadow: 0 0 8px rgba(33, 150, 243, 0.6); }
+        
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, rgba(15, 25, 50, 0.8) 0%, rgba(10, 15, 35, 0.9) 100%);
+            border: 1px solid rgba(34, 150, 243, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2196f3, #03a9f4);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .project-card:hover {
+            border-color: #2196f3;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(33, 150, 243, 0.3);
+        }
+        
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        
+        .project-icon {
+            font-size: 32px;
+        }
+        
+        .classification-badge {
+            background: rgba(33, 150, 243, 0.15);
+            border: 1px solid rgba(33, 150, 243, 0.4);
+            color: #2196f3;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .project-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2196f3;
+            margin-bottom: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .project-card:hover .project-title {
+            color: #03a9f4;
+        }
+        
+        .project-desc {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #9ca3af;
+            margin-bottom: 22px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+        
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            color: #7d8590;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .project-stats {
+            display: flex;
+            gap: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(34, 150, 243, 0.15);
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        
+        .project-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .stat-icon {
+            color: #2196f3;
+        }
+        
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .project-card {
+            animation: cardAppear 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+            
+            .avatar-wrapper {
+                margin: 0 auto 25px;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contribution-grid {
+                grid-template-columns: repeat(26, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <div class="grid-pattern"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="profile-header">
+            <div class="wave-emoji">👋</div>
+            <h1 class="main-title">Hi, I'm Ahmed Ameen</h1>
+            
+            <div class="profile-badges">
+                <div class="badge">
+                    Profile Views <span class="badge-number">263</span>
+                </div>
+                <div class="badge">
+                    <span>👥</span> Followers <span class="badge-number">0</span>
+                </div>
+                <div class="badge">
+                    <span>⭐</span> Stars <span class="badge-number">0</span>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <button class="social-btn whatsapp" onclick="window.open('https://wa.me/201282329726', '_blank')">
+                    <span>💬</span> WHATSAPP
+                </button>
+                <button class="social-btn linkedin" onclick="window.open('https://www.linkedin.com/in/ahmed-ameen-003845303', '_blank')">
+                    <span>💼</span> LINKEDIN
+                </button>
+                <button class="social-btn gmail" onclick="window.location.href='mailto:ahmedkhaledyt2005@gmail.com'">
+                    <span>📧</span> GMAIL
+                </button>
+            </div>
+            
+            <div class="tech-icons">
+                <div class="tech-icon" title="Python">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <linearGradient id="python-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#387EB8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#366994;stop-opacity:1" />
+                        </linearGradient>
+                        <path fill="url(#python-gradient)" d="M49.33 62h29.159C86.606 62 93 55.132 93 46.981V19.183c0-7.912-6.632-13.856-14.555-15.176-5.014-.835-10.195-1.215-15.187-1.191-4.99.023-9.612.448-13.805 1.191C37.098 6.188 35 10.758 35 19.183V30h29v4H23.776c-8.484 0-15.914 5.108-18.237 14.811-2.681 11.12-2.8 17.919 0 29.53C7.614 86.983 12.569 93 21.054 93H31V79.952C31 70.315 39.428 62 49.33 62zm-1.838-39.11c-3.026 0-5.478-2.479-5.478-5.545 0-3.079 2.451-5.581 5.478-5.581 3.015 0 5.479 2.502 5.479 5.581-.001 3.066-2.465 5.545-5.479 5.545zm74.789 25.921C120.183 40.363 116.178 34 107.682 34H97v12.981C97 57.031 88.206 65 78.489 65H49.33C41.342 65 35 72.326 35 80.326v27.8c0 7.91 6.745 12.564 14.462 14.834 9.242 2.717 17.994 3.208 29.051 0C85.862 120.831 93 116.549 93 108.126V97H64v-4h43.682c8.484 0 11.647-5.776 14.599-14.66 3.047-9.145 2.916-17.799 0-29.529zm-41.955 55.606c3.027 0 5.479 2.479 5.479 5.547 0 3.076-2.451 5.579-5.479 5.579-3.015 0-5.478-2.502-5.478-5.579 0-3.068 2.463-5.547 5.478-5.547z"/>
+                    </svg>
+                </div>
+                <div class="tech-icon" title="TensorFlow">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <path fill="#FF6F00" d="M110.8 48.5L73.4 26.8v43.4l37.4 21.7V48.5z"/>
+                        <path fill="#FFA800" d="M73.4 70.2L36 48.5v43.4l37.4 21.7V70.2z"/>
+                        <path fill="#FF6F00" d="M73.4 26.8L36 48.5l37.4 21.7 37.4-21.7-37.4-21.7z"/>
+                    </svg>
+                </div>
+                <div class="tech-icon" title="Pandas">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <path fill="#150458" d="M95.2 50.2h-8.6V31.4h8.6v18.8zm0 28.8h-8.6V60.2h8.6V79zm-13.7 0h-8.6V60.2h8.6V79zm0-47.4h-8.6V31.4h8.6v.4zm-13.7 47.4h-8.6V60.2h8.6V79zm0-28.8h-8.6V31.4h8.6v18.8zm-13.7 28.8h-8.6V60.2h8.6V79zm0-47.4h-8.6V31.4h8.6v.4zm-13.7 47.4h-8.6V60.2h8.6V79zm0-28.8h-8.6V31.4h8.6v18.8z"/>
+                    </svg>
+                </div>
+                <div class="tech-icon" title="SQL Server">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <path fill="#CC2927" d="M70.2 22.2c-15.2 0-27.5 12.3-27.5 27.5v28.6c0 15.2 12.3 27.5 27.5 27.5h15.6c15.2 0 27.5-12.3 27.5-27.5V49.7c0-15.2-12.3-27.5-27.5-27.5H70.2zm15.6 8.3c11.5 0 20.8 9.3 20.8 20.8v29.4c0 11.5-9.3 20.8-20.8 20.8H70.2c-11.5 0-20.8-9.3-20.8-20.8V51.3c0-11.5 9.3-20.8 20.8-20.8h15.6zm-45 13.2c-1.2 0-2.3.5-3.1 1.3L15 67.7c-1.7 1.7-1.7 4.5 0 6.2l22.7 22.7c.8.8 1.9 1.3 3.1 1.3s2.3-.5 3.1-1.3c1.7-1.7 1.7-4.5 0-6.2L24.6 71l19.3-19.4c1.7-1.7 1.7-4.5 0-6.2-.8-.8-1.9-1.3-3.1-1.3z"/>
+                    </svg>
+                </div>
+                <div class="tech-icon" title="PostgreSQL">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <path fill="#336791" d="M89.2 43.5c-1.8-10.4-5.7-16.7-9.4-19.8-2.6-2.2-5.3-3.3-7.3-3.3-.5 0-.9.1-1.3.2-5.7 1.8-7.4 11.5-7.9 17.1-.1 1.1-.2 2-.4 2.7-.4-.3-.9-.5-1.4-.7-5.3-2.3-12.5-3.5-20.4-3.5-11.5 0-23.3 2.4-32.3 6.5C3.6 45.5 0 49.5 0 54.2c0 8.6 8.6 15.6 20.4 17.1.5.1 1 .1 1.5.2v40c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V73.7c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-7.3 0-13.2-4.5-13.2-10 0-5.5 5.9-10 13.2-10 7.3 0 13.2 4.5 13.2 10 0 .6.2 1.1.6 1.5.4.4.9.6 1.4.6h10c1.1 0 2-.9 2-2V51.5c7.3 0 13.2 4.5 13.2 10 0 5.5-5.9 10-13.2 10h-10c-1.1 0-2 .9-2 2v40c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V73.7c7.3 0 13.2 4.5 13.2 10 0 5.5-5.9 10-13.2 10-.6 0-1.1.2-1.5.6-.4.4-.6.9-.6 1.5v27.5c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V83.8c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-7.3 0-13.2-4.5-13.2-10 0-5.5 5.9-10 13.2-10 .6 0 1.1-.2 1.5-.6.4-.4.6-.9.6-1.5V51.5c0-13.2-10.7-24-24-24z"/>
+                    </svg>
+                </div>
+                <div class="tech-icon" title="Seaborn">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <rect fill="#7DB0BC" x="20" y="45" width="15" height="60" rx="2"/>
+                        <rect fill="#5A9FB0" x="40" y="30" width="15" height="75" rx="2"/>
+                        <rect fill="#4A8FA0" x="60" y="20" width="15" height="85" rx="2"/>
+                        <rect fill="#3A7F90" x="80" y="35" width="15" height="70" rx="2"/>
+                    </svg>
+                </div>
+                <div class="tech-icon" title="Scikit-learn">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <path fill="#F89939" d="M64 10L20 35v50l44 25 44-25V35L64 10zm0 12l32 18.2V80L64 98 32 80V40.2L64 22z"/>
+                        <circle fill="#3499CD" cx="64" cy="64" r="20"/>
+                    </svg>
+                </div>
+                <div class="tech-icon" title="Power BI">
+                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
+                        <rect x="30" y="50" width="20" height="60" fill="#F2C811" rx="2"/>
+                        <rect x="54" y="30" width="20" height="80" fill="#F2C811" rx="2"/>
+                        <rect x="78" y="20" width="20" height="90" fill="#F2C811" rx="2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Profile Card -->
+        <div class="profile-card">
+            <div class="profile-grid">
+                <!-- Avatar Section -->
+                <div class="avatar-section">
+                    <div class="avatar-wrapper">
+                        <div class="avatar-frame">
+                            <img src="https://i.imgur.com/7SxrX0p.png" alt="Ahmed Ameen" class="avatar-image">
+                            <div class="avatar-overlay"></div>
+                        </div>
+                        <div class="status-badge">
+                            <div class="status-indicator"></div>
+                            <span>Available</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bars">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>SQL</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Power BI</span>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Scikit-learn</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Python</span>
+                                <span class="skill-percentage">94%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 94%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Pandas</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Matplotlib</span>
+                                <span class="skill-percentage">87%</span>
+                            </div>
+                            <div class="skill-bar-bg">
+                                <div class="skill-bar-fill" style="width: 87%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Info Section -->
+                <div class="info-section">
+                    <div class="name-block">
+                        <div class="name">Ahmed Ameen</div>
+                        <div class="username">@ahmedkhaled00007</div>
+                        <div class="title">Data Analyst & Scientist</div>
+                    </div>
+                    
+                    <div class="bio">
+                        Passionate Data Analyst and Data Scientist with a strong focus on turning complex datasets into meaningful business insights. Skilled in machine learning, statistical modeling, predictive analytics, and data visualization, I specialize in crafting data-driven solutions that power strategic decisions. Experienced in building end-to-end data pipelines and designing impactful dashboards that bridge the gap between analytics and action across diverse organizations.
+                    </div>
+                    
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <span class="stat-number">47</span>
+                            <span class="stat-label">Repositories</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">1.8K</span>
+                            <span class="stat-label">Contributions</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">842</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">327</span>
+                            <span class="stat-label">Stars</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-section">
+                        <div class="tech-title">Technical Stack</div>
+                        <div class="tech-grid">
+                            <div class="tech-tag">Python</div>
+                            <div class="tech-tag">Pandas</div>
+                            <div class="tech-tag">SQL Server</div>
+                            <div class="tech-tag">PostgreSQL</div>
+                            <div class="tech-tag">Seaborn</div>
+                            <div class="tech-tag">Scikit-learn</div>
+                            <div class="tech-tag">PyTorch</div>
+                            <div class="tech-tag">Scikit-learn</div>
+                            <div class="tech-tag">Pandas</div>
+                            <div class="tech-tag">NumPy</div>
+                            <div class="tech-tag">Matplotlib</div>
+                            <div class="tech-tag">Seaborn</div>
+                            <div class="tech-tag">Tableau</div>
+                            <div class="tech-tag">Power BI</div>
+                            <div class="tech-tag">Apache Spark</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity Section -->
+        <h2 class="section-header">Contribution Activity</h2>
+        <div class="activity-panel">
+            <div class="activity-header">
+                <div class="activity-title">📊 1,847 contributions in the last year</div>
+            </div>
+            <div class="contribution-grid" id="contribGrid"></div>
+        </div>
+        
+        <!-- Projects Section -->
+        <h2 class="section-header">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" style="animation-delay: 0.1s">
+                <div class="project-header">
+                    <div class="project-icon">🎮</div>
+                    <div class="classification-badge">Analytics / ML</div>
+                </div>
+                <h3 class="project-title">End2End-Games-Analytics</h3>
+                <p class="project-desc">End-to-end data analytics and machine learning pipeline for video games data, covering data cleaning, SQL analysis, Power BI dashboards, and predictive modeling.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">SQL</span>
+                    <span class="tech-badge">Power BI</span>
+                    <span class="tech-badge">Jupyter</span>
+                </div>
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="stat-icon">⭐</span>
+                        <span>48</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">🔄</span>
+                        <span>19</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">📝</span>
+                        <span>Jupyter Notebook</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" style="animation-delay: 0.2s">
+                <div class="project-header">
+                    <div class="project-icon">💼</div>
+                    <div class="classification-badge">ML Models</div>
+                </div>
+                <h3 class="project-title">ML-Linkedin-models</h3>
+                <p class="project-desc">A machine learning project that analyzes and predicts employee salary and sponsorship status in the USA. The project includes complete EDA, feature engineering, and model comparison using multiple algorithms.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Scikit-learn</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">Jupyter</span>
+                </div>
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="stat-icon">⭐</span>
+                        <span>52</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">🔄</span>
+                        <span>21</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">📝</span>
+                        <span>Jupyter Notebook</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" style="animation-delay: 0.3s">
+                <div class="project-header">
+                    <div class="project-icon">📊</div>
+                    <div class="classification-badge">Visualization</div>
+                </div>
+                <h3 class="project-title">PowerBI-Covid19-Dashboard1</h3>
+                <p class="project-desc">Interactive Power BI dashboard that visualizes key insights from the COVID-19 pandemic — including global and regional case trends, recovery rates, and mortality statistics.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Power BI</span>
+                    <span class="tech-badge">DAX</span>
+                    <span class="tech-badge">SQL</span>
+                    <span class="tech-badge">Excel</span>
+                </div>
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="stat-icon">⭐</span>
+                        <span>45</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">🔄</span>
+                        <span>16</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">📝</span>
+                        <span>Power BI</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" style="animation-delay: 0.4s">
+                <div class="project-header">
+                    <div class="project-icon">✍️</div>
+                    <div class="classification-badge">Deep Learning</div>
+                </div>
+                <h3 class="project-title">DL-handwritten-digit-sum-scratch</h3>
+                <p class="project-desc">A deep learning model built from scratch using NumPy to predict the sum of two handwritten digits by combining MNIST images and implementing forward/backward propagation, gradient descent, and softmax activation.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">NumPy</span>
+                    <span class="tech-badge">MNIST</span>
+                    <span class="tech-badge">Jupyter</span>
+                </div>
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="stat-icon">⭐</span>
+                        <span>67</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">🔄</span>
+                        <span>28</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-icon">📝</span>
+                        <span>Jupyter Notebook</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Generate contribution graph
+        const grid = document.getElementById('contribGrid');
+        const levels = [0, 1, 2, 3, 4];
+        
+        for (let i = 0; i < 371; i++) {
+            const cell = document.createElement('div');
+            const level = levels[Math.floor(Math.random() * levels.length)];
+            cell.className = `contrib-cell contrib-${level}`;
+            grid.appendChild(cell);
+        }
+    </script>
+</body>
+</html>
