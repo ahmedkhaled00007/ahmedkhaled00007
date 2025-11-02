@@ -4,894 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed Ameen - Data Analyst GitHub Profile</title>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0e27;
-            color: #e0e6ed;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #0d1117, #161b22);
+            color: white;
             overflow-x: hidden;
         }
-        
-        /* Loading Spinner */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0e27;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(33, 150, 243, 0.1);
-            border-top: 4px solid #2196f3;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .loading-text {
-            color: #2196f3;
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 15px;
-        }
-        
-        .loading-subtext {
-            color: #9ca3af;
-            font-size: 14px;
-            margin-top: 8px;
-        }
-        
-        /* Background Effects */
-        .bg-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-        
-        .grid-pattern {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(34, 150, 243, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34, 150, 243, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.4;
-        }
-        
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(34, 150, 243, 0.2) 0%, transparent 70%);
-            top: -200px;
-            left: -200px;
-        }
-        
-        .orb-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(25, 118, 210, 0.15) 0%, transparent 70%);
-            bottom: -100px;
-            right: -100px;
-        }
-        
+
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Header Section */
-        .profile-header {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
             text-align: center;
-            margin-bottom: 50px;
-            animation: fadeInDown 1s ease;
         }
-        
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .wave-emoji {
-            font-size: 48px;
-            display: inline-block;
-            animation: wave 2s ease-in-out infinite;
+
+        h1.main-title {
+            font-size: 2.4rem;
             margin-bottom: 10px;
+            background: linear-gradient(to right, #58a6ff, #8b949e);
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        
+
+        .wave-emoji {
+            font-size: 2.5rem;
+            animation: wave 1.5s infinite;
+        }
+
         @keyframes wave {
             0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(20deg); }
-            75% { transform: rotate(-20deg); }
+            50% { transform: rotate(20deg); }
         }
-        
-        .main-title {
-            font-size: 56px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 15px auto;
+            border: 3px solid #58a6ff;
+            box-shadow: 0 0 15px #58a6ff33;
         }
-        
+
         .profile-badges {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin: 30px 0;
             flex-wrap: wrap;
+            margin: 20px 0;
         }
-        
+
         .badge {
-            background: rgba(34, 150, 243, 0.1);
-            border: 1px solid rgba(34, 150, 243, 0.3);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #2196f3;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
+            background: #21262d;
+            padding: 10px 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px #30363d;
+            transition: 0.3s;
         }
-        
+
         .badge:hover {
-            background: rgba(34, 150, 243, 0.2);
-            border-color: #2196f3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(34, 150, 243, 0.3);
+            background: #30363d;
+            transform: translateY(-3px);
         }
-        
+
         .badge-number {
-            background: #2196f3;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 700;
+            color: #58a6ff;
+            font-weight: bold;
         }
-        
-        /* Social Links */
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin: 30px 0;
             flex-wrap: wrap;
-        }
-        
-        .social-btn {
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .social-btn.whatsapp {
-            background: #25d366;
-            color: white;
-        }
-        
-        .social-btn.linkedin {
-            background: #0077b5;
-            color: white;
-        }
-        
-        .social-btn.gmail {
-            background: #ea4335;
-            color: white;
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Tech Icons */
-        .tech-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        
-        .tech-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(34, 150, 243, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .tech-icon:hover {
-            background: rgba(34, 150, 243, 0.1);
-            border-color: #2196f3;
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(34, 150, 243, 0.3);
-        }
-        
-        /* Main Profile Card */
-        .profile-card {
-            background: linear-gradient(135deg, rgba(15, 25, 50, 0.9) 0%, rgba(10, 15, 35, 0.95) 100%);
-            border: 1px solid rgba(34, 150, 243, 0.2);
-            border-radius: 16px;
-            padding: 50px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-            animation: slideIn 1.2s ease;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #2196f3, #03a9f4, #2196f3);
-        }
-        
-        .profile-grid {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 50px;
-            align-items: start;
-        }
-        
-        /* Avatar Section */
-        .avatar-section {
-            position: relative;
-        }
-        
-        .avatar-wrapper {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            margin-bottom: 25px;
-        }
-        
-        .avatar-frame {
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            border: 3px solid #2196f3;
-            background: #0a0e27;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 0 30px rgba(33, 150, 243, 0.4);
-        }
-        
-        .avatar-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(50%) brightness(0.9) contrast(1.1);
-            transition: filter 0.4s ease;
-        }
-        
-        .avatar-frame:hover .avatar-image {
-            filter: grayscale(0%) brightness(1) contrast(1);
-        }
-        
-        .avatar-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, transparent 0%, rgba(33, 150, 243, 0.15) 100%);
-            pointer-events: none;
-        }
-        
-        .status-badge {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #2196f3, #1976d2);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 3;
-        }
-        
-        .status-indicator {
-            width: 10px;
-            height: 10px;
-            background: #4caf50;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 10px #4caf50;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-        }
-        
-        .skill-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
             margin-top: 25px;
         }
-        
-        .skill-item {
-            position: relative;
-        }
-        
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #9ca3af;
-        }
-        
-        .skill-percentage {
-            color: #2196f3;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .skill-bar-bg {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .skill-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #1976d2, #2196f3, #03a9f4);
-            border-radius: 5px;
-            transition: width 1.5s ease;
-            box-shadow: 0 0 15px rgba(33, 150, 243, 0.6);
-        }
-        
-        /* Info Section */
-        .info-section {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .name-block {
-            border-left: 4px solid #2196f3;
-            padding-left: 25px;
-        }
-        
-        .name {
-            font-size: 48px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-        
-        .username {
-            font-size: 22px;
-            color: #2196f3;
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 10px;
-        }
-        
-        .title {
-            font-size: 20px;
-            color: #9ca3af;
-            font-weight: 600;
-        }
-        
-        .bio {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #b0b7c3;
-        }
-        
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(34, 150, 243, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .stat-card:hover {
-            border-color: #2196f3;
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);
-        }
-        
-        .stat-number {
-            font-size: 36px;
-            font-weight: 800;
-            color: #2196f3;
-            display: block;
-            margin-bottom: 8px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: #9ca3af;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        
-        .tech-section {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(34, 150, 243, 0.15);
-            border-radius: 12px;
-            padding: 25px;
-        }
-        
-        .tech-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .tech-title::before {
-            content: '⚡';
-            font-size: 24px;
-        }
-        
-        .tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        
-        .tech-tag {
-            background: rgba(33, 150, 243, 0.1);
-            border: 1px solid rgba(33, 150, 243, 0.3);
-            color: #2196f3;
+
+        .social-btn {
             padding: 10px 18px;
-            border-radius: 8px;
-            font-size: 14px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: 0.3s;
         }
-        
-        .tech-tag:hover {
-            background: rgba(33, 150, 243, 0.2);
-            border-color: #2196f3;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(33, 150, 243, 0.3);
+
+        .whatsapp { background: #25d366; color: #fff; }
+        .linkedin { background: #0077b5; color: #fff; }
+        .gmail { background: #ea4335; color: #fff; }
+        .github { background: #24292f; color: #fff; }
+
+        .social-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
         }
-        
-        /* Section Headers */
-        .section-header {
-            font-size: 36px;
-            font-weight: 800;
-            color: #ffffff;
-            margin: 60px 0 35px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+
+        .repos-section {
+            margin-top: 40px;
+            text-align: left;
         }
-        
-        .section-header::before {
-            content: '';
-            width: 6px;
-            height: 40px;
-            background: linear-gradient(180deg, #2196f3, #03a9f4);
-            border-radius: 3px;
+
+        .repo-card {
+            background: #161b22;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #58a6ff;
+            transition: 0.3s;
         }
-        
-        /* Activity Panel */
-        .activity-panel {
-            background: linear-gradient(135deg, rgba(15, 25, 50, 0.8) 0%, rgba(10, 15, 35, 0.9) 100%);
-            border: 1px solid rgba(34, 150, 243, 0.2);
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 50px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+        .repo-card:hover {
+            transform: translateX(5px);
+            background: #1f242d;
         }
-        
-        .activity-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+
+        a.repo-link {
+            text-decoration: none;
+            color: #58a6ff;
+            font-weight: 600;
         }
-        
-        .activity-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #2196f3;
-        }
-        
-        .contribution-grid {
-            display: grid;
-            grid-template-columns: repeat(53, 1fr);
-            gap: 4px;
-        }
-        
-        .contrib-cell {
-            aspect-ratio: 1;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(33, 150, 243, 0.1);
-            border-radius: 3px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        
-        .contrib-cell:hover {
-            border-color: #2196f3;
-            transform: scale(1.4);
-            z-index: 10;
-            box-shadow: 0 0 12px rgba(33, 150, 243, 0.8);
-        }
-        
-        .contrib-0 { background: rgba(255, 255, 255, 0.03); }
-        .contrib-1 { background: rgba(33, 150, 243, 0.3); }
-        .contrib-2 { background: rgba(33, 150, 243, 0.5); }
-        .contrib-3 { background: rgba(33, 150, 243, 0.7); }
-        .contrib-4 { background: rgba(33, 150, 243, 0.9); box-shadow: 0 0 8px rgba(33, 150, 243, 0.6); }
-        
-        /* Project Cards */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .project-card {
-            background: linear-gradient(135deg, rgba(15, 25, 50, 0.8) 0%, rgba(10, 15, 35, 0.9) 100%);
-            border: 1px solid rgba(34, 150, 243, 0.2);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            animation: cardAppear 0.6s ease forwards;
-            opacity: 0;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #2196f3, #03a9f4);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .project-card:hover {
-            border-color: #2196f3;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(33, 150, 243, 0.3);
-        }
-        
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 18px;
-        }
-        
-        .project-icon {
-            font-size: 32px;
-        }
-        
-        .classification-badge {
-            background: rgba(33, 150, 243, 0.15);
-            border: 1px solid rgba(33, 150, 243, 0.4);
-            color: #2196f3;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .project-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2196f3;
-            margin-bottom: 14px;
-            transition: color 0.3s ease;
-        }
-        
-        .project-card:hover .project-title {
-            color: #03a9f4;
-        }
-        
-        .project-desc {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #9ca3af;
-            margin-bottom: 22px;
-        }
-        
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 22px;
-        }
-        
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(33, 150, 243, 0.2);
-            color: #7d8590;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .project-stats {
-            display: flex;
-            gap: 24px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(34, 150, 243, 0.15);
-            font-size: 14px;
-            color: #9ca3af;
-        }
-        
-        .project-stat {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .stat-icon {
-            color: #2196f3;
-        }
-        
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .profile-grid {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-            
-            .avatar-wrapper {
-                margin: 0 auto 25px;
-            }
-            
-            .stats-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contribution-grid {
-                grid-template-columns: repeat(26, 1fr);
-            }
+
+        a.repo-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="spinner"></div>
-        <div class="loading-text">Loading GitHub Data...</div>
-        <div class="loading-subtext">Fetching repositories and statistics</div>
-    </div>
-    
-    <div class="bg-container">
-        <div class="grid-pattern"></div>
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-    </div>
-    
     <div class="container">
-        <!-- Header -->
-        <div class="profile-header">
-            <div class="wave-emoji">👋</div>
-            <h1 class="main-title">Hi, I'm Ahmed Ameen</h1>
-            
-            <div class="profile-badges">
-                <div class="badge">
-                    Profile Views <span class="badge-number">263</span>
-                </div>
-                <div class="badge">
-                    <span>👥</span> Followers <span class="badge-number" id="followerBadge">0</span>
-                </div>
-                <div class="badge">
-                    <span>⭐</span> Stars <span class="badge-number" id="starBadge">0</span>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                <button class="social-btn whatsapp" onclick="window.open('https://wa.me/201282329726', '_blank')">
-                    <span>💬</span> WHATSAPP
-                </button>
-                <button class="social-btn linkedin" onclick="window.open('https://www.linkedin.com/in/ahmed-ameen-003845303', '_blank')">
-                    <span>💼</span> LINKEDIN
-                </button>
-                <button class="social-btn gmail" onclick="window.location.href='mailto:ahmedkhaledyt2005@gmail.com'">
-                    <span>📧</span> GMAIL
-                </button>
-            </div>
-            
-            <div class="tech-icons">
-                <div class="tech-icon" title="Python">🐍</div>
-                <div class="tech-icon" title="TensorFlow">🧠</div>
-                <div class="tech-icon" title="Pandas">🐼</div>
-                <div class="tech-icon" title="SQL">💾</div>
-                <div class="tech-icon" title="PostgreSQL">🐘</div>
-                <div class="tech-icon" title="Data Viz">📊</div>
-                <div class="tech-icon" title="ML">🤖</div>
-                <div class="tech-icon" title="Power BI">📈</div>
-            </div>
+        <div class="wave-emoji">👋</div>
+        <h1 class="main-title">Hi, I'm Ahmed Ameen</h1>
+
+        <img id="profile-img" class="profile-img" src="" alt="GitHub Profile Image">
+
+        <div class="profile-badges">
+            <div class="badge">👥 Followers: <span id="followers" class="badge-number">...</span></div>
+            <div class="badge">📦 Repos: <span id="repos" class="badge-number">...</span></div>
+            <div class="badge">⭐ Stars: <span id="stars" class="badge-number">...</span></div>
         </div>
-        
-        <!-- Main Profile Card -->
-        <div class="profile-card">
-            <div class="profile-grid">
-                <!-- Avatar Section -->
-                <div class="avatar-section">
-                    <div class="avatar-wrapper">
-                        <div class="avatar-frame">
-                            <img src="https://i.imgur.com/7SxrX0p.png" alt="Ahmed Ameen" class="avatar-image">
-                            <div class="avatar-overlay"></div>
-                        </div>
-                        <div class="status-badge">
-                            <div class="status-indicator"></div>
-                            <span>Available</span>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bars">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>SQL</span>
-                                <span class="skill-percentage">95%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Power BI</span>
-                                <span class="skill-percentage">92%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Scikit-learn</span>
-                                <span class="skill-percentage">88%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Python</span>
-                                <span class="skill-percentage">94%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" style="width: 94%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Pandas</span>
-                                <span class="skill-percentage">90%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class
+
+        <div class="social-links">
+            <button class="social-btn whatsapp" onclick="window.open('https://wa.me/201282329726', '_blank')">💬 WhatsApp</button>
+            <button class="social-btn linkedin" onclick="window.open('https://www.linkedin.com/in/ahmed-ameen-003845303', '_blank')">💼 LinkedIn</button>
+            <button class="social-btn gmail" onclick="window.location.href='mailto:ahmedkhaledyt2005@gmail.com'">📧 Gmail</button>
+            <button class="social-btn github" onclick="window.open('https://github.com/ahmedkhaled00007', '_blank')">🧠 GitHub</button>
+        </div>
+
+        <div class="repos-section">
+            <h2>📌 Pinned Repositories</h2>
+            <div id="repos-container"></div>
+        </div>
+    </div>
+
+    <script>
+        const GITHUB_USERNAME = "ahmedkhaled00007"; // ✅ your GitHub username
+
+        async function fetchGitHubData() {
+            try {
+                // Fetch main user data
+                const userRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
+                const user = await userRes.json();
+
+                document.getElementById("profile-img").src = user.avatar_url;
+                document.getElementById("followers").textContent = user.followers;
+                document.getElementById("repos").textContent = user.public_repos;
+
+                // Fetch repositories for stars and pinned
+                const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`);
+                const repos = await reposRes.json();
+
+                // Total stars
+                const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+                document.getElementById("stars").textContent = totalStars;
+
+                // Show top 5 repos (sorted by stars)
+                const topRepos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 5);
+                const reposContainer = document.getElementById("repos-container");
+
+                topRepos.forEach(repo => {
+                    const repoCard = document.createElement("div");
+                    repoCard.className = "repo-card";
+                    repoCard.innerHTML = `
+                        <a class="repo-link" href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        <p>${repo.description || "No description provided."}</p>
+                        <small>⭐ ${repo.stargazers_count} | 🍴 ${repo.forks_count}</small>
+                    `;
+                    reposContainer.appendChild(repoCard);
+                });
+
+            } catch (error) {
+                console.error("Error fetching GitHub data:", error);
+            }
+        }
+
+        fetchGitHubData();
+    </script>
+</body>
+</html>
