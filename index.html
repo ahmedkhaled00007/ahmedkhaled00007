@@ -20,6 +20,56 @@
             overflow-x: hidden;
         }
         
+        /* Loading Spinner */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0e27;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(33, 150, 243, 0.1);
+            border-top: 4px solid #2196f3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #2196f3;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .loading-subtext {
+            color: #9ca3af;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
         /* Background Effects */
         .bg-container {
             position: fixed;
@@ -585,6 +635,8 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            animation: cardAppear 0.6s ease forwards;
+            opacity: 0;
         }
         
         .project-card::before {
@@ -698,11 +750,6 @@
             }
         }
         
-        .project-card {
-            animation: cardAppear 0.6s ease forwards;
-            opacity: 0;
-        }
-        
         /* Responsive */
         @media (max-width: 1024px) {
             .profile-grid {
@@ -729,6 +776,13 @@
     </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading GitHub Data...</div>
+        <div class="loading-subtext">Fetching repositories and statistics</div>
+    </div>
+    
     <div class="bg-container">
         <div class="grid-pattern"></div>
         <div class="gradient-orb orb-1"></div>
@@ -746,10 +800,10 @@
                     Profile Views <span class="badge-number">263</span>
                 </div>
                 <div class="badge">
-                    <span>👥</span> Followers <span class="badge-number">0</span>
+                    <span>👥</span> Followers <span class="badge-number" id="followerBadge">0</span>
                 </div>
                 <div class="badge">
-                    <span>⭐</span> Stars <span class="badge-number">0</span>
+                    <span>⭐</span> Stars <span class="badge-number" id="starBadge">0</span>
                 </div>
             </div>
             
@@ -766,58 +820,14 @@
             </div>
             
             <div class="tech-icons">
-                <div class="tech-icon" title="Python">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <linearGradient id="python-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#387EB8;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#366994;stop-opacity:1" />
-                        </linearGradient>
-                        <path fill="url(#python-gradient)" d="M49.33 62h29.159C86.606 62 93 55.132 93 46.981V19.183c0-7.912-6.632-13.856-14.555-15.176-5.014-.835-10.195-1.215-15.187-1.191-4.99.023-9.612.448-13.805 1.191C37.098 6.188 35 10.758 35 19.183V30h29v4H23.776c-8.484 0-15.914 5.108-18.237 14.811-2.681 11.12-2.8 17.919 0 29.53C7.614 86.983 12.569 93 21.054 93H31V79.952C31 70.315 39.428 62 49.33 62zm-1.838-39.11c-3.026 0-5.478-2.479-5.478-5.545 0-3.079 2.451-5.581 5.478-5.581 3.015 0 5.479 2.502 5.479 5.581-.001 3.066-2.465 5.545-5.479 5.545zm74.789 25.921C120.183 40.363 116.178 34 107.682 34H97v12.981C97 57.031 88.206 65 78.489 65H49.33C41.342 65 35 72.326 35 80.326v27.8c0 7.91 6.745 12.564 14.462 14.834 9.242 2.717 17.994 3.208 29.051 0C85.862 120.831 93 116.549 93 108.126V97H64v-4h43.682c8.484 0 11.647-5.776 14.599-14.66 3.047-9.145 2.916-17.799 0-29.529zm-41.955 55.606c3.027 0 5.479 2.479 5.479 5.547 0 3.076-2.451 5.579-5.479 5.579-3.015 0-5.478-2.502-5.478-5.579 0-3.068 2.463-5.547 5.478-5.547z"/>
-                    </svg>
-                </div>
-                <div class="tech-icon" title="TensorFlow">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <path fill="#FF6F00" d="M110.8 48.5L73.4 26.8v43.4l37.4 21.7V48.5z"/>
-                        <path fill="#FFA800" d="M73.4 70.2L36 48.5v43.4l37.4 21.7V70.2z"/>
-                        <path fill="#FF6F00" d="M73.4 26.8L36 48.5l37.4 21.7 37.4-21.7-37.4-21.7z"/>
-                    </svg>
-                </div>
-                <div class="tech-icon" title="Pandas">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <path fill="#150458" d="M95.2 50.2h-8.6V31.4h8.6v18.8zm0 28.8h-8.6V60.2h8.6V79zm-13.7 0h-8.6V60.2h8.6V79zm0-47.4h-8.6V31.4h8.6v.4zm-13.7 47.4h-8.6V60.2h8.6V79zm0-28.8h-8.6V31.4h8.6v18.8zm-13.7 28.8h-8.6V60.2h8.6V79zm0-47.4h-8.6V31.4h8.6v.4zm-13.7 47.4h-8.6V60.2h8.6V79zm0-28.8h-8.6V31.4h8.6v18.8z"/>
-                    </svg>
-                </div>
-                <div class="tech-icon" title="SQL Server">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <path fill="#CC2927" d="M70.2 22.2c-15.2 0-27.5 12.3-27.5 27.5v28.6c0 15.2 12.3 27.5 27.5 27.5h15.6c15.2 0 27.5-12.3 27.5-27.5V49.7c0-15.2-12.3-27.5-27.5-27.5H70.2zm15.6 8.3c11.5 0 20.8 9.3 20.8 20.8v29.4c0 11.5-9.3 20.8-20.8 20.8H70.2c-11.5 0-20.8-9.3-20.8-20.8V51.3c0-11.5 9.3-20.8 20.8-20.8h15.6zm-45 13.2c-1.2 0-2.3.5-3.1 1.3L15 67.7c-1.7 1.7-1.7 4.5 0 6.2l22.7 22.7c.8.8 1.9 1.3 3.1 1.3s2.3-.5 3.1-1.3c1.7-1.7 1.7-4.5 0-6.2L24.6 71l19.3-19.4c1.7-1.7 1.7-4.5 0-6.2-.8-.8-1.9-1.3-3.1-1.3z"/>
-                    </svg>
-                </div>
-                <div class="tech-icon" title="PostgreSQL">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <path fill="#336791" d="M89.2 43.5c-1.8-10.4-5.7-16.7-9.4-19.8-2.6-2.2-5.3-3.3-7.3-3.3-.5 0-.9.1-1.3.2-5.7 1.8-7.4 11.5-7.9 17.1-.1 1.1-.2 2-.4 2.7-.4-.3-.9-.5-1.4-.7-5.3-2.3-12.5-3.5-20.4-3.5-11.5 0-23.3 2.4-32.3 6.5C3.6 45.5 0 49.5 0 54.2c0 8.6 8.6 15.6 20.4 17.1.5.1 1 .1 1.5.2v40c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V73.7c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-7.3 0-13.2-4.5-13.2-10 0-5.5 5.9-10 13.2-10 7.3 0 13.2 4.5 13.2 10 0 .6.2 1.1.6 1.5.4.4.9.6 1.4.6h10c1.1 0 2-.9 2-2V51.5c7.3 0 13.2 4.5 13.2 10 0 5.5-5.9 10-13.2 10h-10c-1.1 0-2 .9-2 2v40c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V73.7c7.3 0 13.2 4.5 13.2 10 0 5.5-5.9 10-13.2 10-.6 0-1.1.2-1.5.6-.4.4-.6.9-.6 1.5v27.5c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V83.8c0-.6-.2-1.1-.6-1.5-.4-.4-.9-.6-1.4-.6-7.3 0-13.2-4.5-13.2-10 0-5.5 5.9-10 13.2-10 .6 0 1.1-.2 1.5-.6.4-.4.6-.9.6-1.5V51.5c0-13.2-10.7-24-24-24z"/>
-                    </svg>
-                </div>
-                <div class="tech-icon" title="Seaborn">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <rect fill="#7DB0BC" x="20" y="45" width="15" height="60" rx="2"/>
-                        <rect fill="#5A9FB0" x="40" y="30" width="15" height="75" rx="2"/>
-                        <rect fill="#4A8FA0" x="60" y="20" width="15" height="85" rx="2"/>
-                        <rect fill="#3A7F90" x="80" y="35" width="15" height="70" rx="2"/>
-                    </svg>
-                </div>
-                <div class="tech-icon" title="Scikit-learn">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <path fill="#F89939" d="M64 10L20 35v50l44 25 44-25V35L64 10zm0 12l32 18.2V80L64 98 32 80V40.2L64 22z"/>
-                        <circle fill="#3499CD" cx="64" cy="64" r="20"/>
-                    </svg>
-                </div>
-                <div class="tech-icon" title="Power BI">
-                    <svg viewBox="0 0 128 128" style="width: 40px; height: 40px;">
-                        <rect x="30" y="50" width="20" height="60" fill="#F2C811" rx="2"/>
-                        <rect x="54" y="30" width="20" height="80" fill="#F2C811" rx="2"/>
-                        <rect x="78" y="20" width="20" height="90" fill="#F2C811" rx="2"/>
-                    </svg>
-                </div>
+                <div class="tech-icon" title="Python">🐍</div>
+                <div class="tech-icon" title="TensorFlow">🧠</div>
+                <div class="tech-icon" title="Pandas">🐼</div>
+                <div class="tech-icon" title="SQL">💾</div>
+                <div class="tech-icon" title="PostgreSQL">🐘</div>
+                <div class="tech-icon" title="Data Viz">📊</div>
+                <div class="tech-icon" title="ML">🤖</div>
+                <div class="tech-icon" title="Power BI">📈</div>
             </div>
         </div>
         
@@ -884,213 +894,4 @@
                             </div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Matplotlib</span>
-                                <span class="skill-percentage">87%</span>
-                            </div>
-                            <div class="skill-bar-bg">
-                                <div class="skill-bar-fill" style="width: 87%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Info Section -->
-                <div class="info-section">
-                    <div class="name-block">
-                        <div class="name">Ahmed Ameen</div>
-                        <div class="username">@ahmedkhaled00007</div>
-                        <div class="title">Data Analyst & Scientist</div>
-                    </div>
-                    
-                    <div class="bio">
-                        Passionate Data Analyst and Data Scientist with a strong focus on turning complex datasets into meaningful business insights. Skilled in machine learning, statistical modeling, predictive analytics, and data visualization, I specialize in crafting data-driven solutions that power strategic decisions. Experienced in building end-to-end data pipelines and designing impactful dashboards that bridge the gap between analytics and action across diverse organizations.
-                    </div>
-                    
-                    <div class="stats-row">
-                        <div class="stat-card">
-                            <span class="stat-number">47</span>
-                            <span class="stat-label">Repositories</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">1.8K</span>
-                            <span class="stat-label">Contributions</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">842</span>
-                            <span class="stat-label">Followers</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">327</span>
-                            <span class="stat-label">Stars</span>
-                        </div>
-                    </div>
-                    
-                    <div class="tech-section">
-                        <div class="tech-title">Technical Stack</div>
-                        <div class="tech-grid">
-                            <div class="tech-tag">Python</div>
-                            <div class="tech-tag">Pandas</div>
-                            <div class="tech-tag">SQL Server</div>
-                            <div class="tech-tag">PostgreSQL</div>
-                            <div class="tech-tag">Seaborn</div>
-                            <div class="tech-tag">Scikit-learn</div>
-                            <div class="tech-tag">PyTorch</div>
-                            <div class="tech-tag">Scikit-learn</div>
-                            <div class="tech-tag">Pandas</div>
-                            <div class="tech-tag">NumPy</div>
-                            <div class="tech-tag">Matplotlib</div>
-                            <div class="tech-tag">Seaborn</div>
-                            <div class="tech-tag">Tableau</div>
-                            <div class="tech-tag">Power BI</div>
-                            <div class="tech-tag">Apache Spark</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Activity Section -->
-        <h2 class="section-header">Contribution Activity</h2>
-        <div class="activity-panel">
-            <div class="activity-header">
-                <div class="activity-title">📊 1,847 contributions in the last year</div>
-            </div>
-            <div class="contribution-grid" id="contribGrid"></div>
-        </div>
-        
-        <!-- Projects Section -->
-        <h2 class="section-header">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card" style="animation-delay: 0.1s">
-                <div class="project-header">
-                    <div class="project-icon">🎮</div>
-                    <div class="classification-badge">Analytics / ML</div>
-                </div>
-                <h3 class="project-title">End2End-Games-Analytics</h3>
-                <p class="project-desc">End-to-end data analytics and machine learning pipeline for video games data, covering data cleaning, SQL analysis, Power BI dashboards, and predictive modeling.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">SQL</span>
-                    <span class="tech-badge">Power BI</span>
-                    <span class="tech-badge">Jupyter</span>
-                </div>
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span class="stat-icon">⭐</span>
-                        <span>48</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">🔄</span>
-                        <span>19</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">📝</span>
-                        <span>Jupyter Notebook</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card" style="animation-delay: 0.2s">
-                <div class="project-header">
-                    <div class="project-icon">💼</div>
-                    <div class="classification-badge">ML Models</div>
-                </div>
-                <h3 class="project-title">ML-Linkedin-models</h3>
-                <p class="project-desc">A machine learning project that analyzes and predicts employee salary and sponsorship status in the USA. The project includes complete EDA, feature engineering, and model comparison using multiple algorithms.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Scikit-learn</span>
-                    <span class="tech-badge">Pandas</span>
-                    <span class="tech-badge">Jupyter</span>
-                </div>
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span class="stat-icon">⭐</span>
-                        <span>52</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">🔄</span>
-                        <span>21</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">📝</span>
-                        <span>Jupyter Notebook</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card" style="animation-delay: 0.3s">
-                <div class="project-header">
-                    <div class="project-icon">📊</div>
-                    <div class="classification-badge">Visualization</div>
-                </div>
-                <h3 class="project-title">PowerBI-Covid19-Dashboard1</h3>
-                <p class="project-desc">Interactive Power BI dashboard that visualizes key insights from the COVID-19 pandemic — including global and regional case trends, recovery rates, and mortality statistics.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Power BI</span>
-                    <span class="tech-badge">DAX</span>
-                    <span class="tech-badge">SQL</span>
-                    <span class="tech-badge">Excel</span>
-                </div>
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span class="stat-icon">⭐</span>
-                        <span>45</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">🔄</span>
-                        <span>16</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">📝</span>
-                        <span>Power BI</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card" style="animation-delay: 0.4s">
-                <div class="project-header">
-                    <div class="project-icon">✍️</div>
-                    <div class="classification-badge">Deep Learning</div>
-                </div>
-                <h3 class="project-title">DL-handwritten-digit-sum-scratch</h3>
-                <p class="project-desc">A deep learning model built from scratch using NumPy to predict the sum of two handwritten digits by combining MNIST images and implementing forward/backward propagation, gradient descent, and softmax activation.</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">NumPy</span>
-                    <span class="tech-badge">MNIST</span>
-                    <span class="tech-badge">Jupyter</span>
-                </div>
-                <div class="project-stats">
-                    <div class="project-stat">
-                        <span class="stat-icon">⭐</span>
-                        <span>67</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">🔄</span>
-                        <span>28</span>
-                    </div>
-                    <div class="project-stat">
-                        <span class="stat-icon">📝</span>
-                        <span>Jupyter Notebook</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // Generate contribution graph
-        const grid = document.getElementById('contribGrid');
-        const levels = [0, 1, 2, 3, 4];
-        
-        for (let i = 0; i < 371; i++) {
-            const cell = document.createElement('div');
-            const level = levels[Math.floor(Math.random() * levels.length)];
-            cell.className = `contrib-cell contrib-${level}`;
-            grid.appendChild(cell);
-        }
-    </script>
-</body>
-</html>
+                            <div class
