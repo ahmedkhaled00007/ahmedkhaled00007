@@ -41,10 +41,17 @@
 ### 📌 Pinned Repositories
 
 #### 🎮 [End2End-Games-Analytics](https://github.com/ahmedkhaled00007/End2End-Games-Analytics)
-> End-to-end data analytics and machine learning pipeline for video games data, covering data cleaning, SQL analysis, Power BI dashboards, and predictive modeling.
+> End-to-end data analytics and machine learning pipeline for video games data — includes data cleaning, SQL analysis, Power BI dashboards, and predictive modeling.
 
-#### 📊 [Your-Next-Repo](https://github.com/ahmedkhaled00007)
-> Add another featured project here (for example, a Power BI dashboard, ML model, or SQL analysis).
+#### 🤖 [Ml-Linkedin-Models](https://github.com/ahmedkhaled00007/Ml-Linkedin-models)
+> Machine learning project that predicts employee salary and sponsorship status in the USA, featuring full EDA, feature engineering, and model comparison.
+
+#### 📊 [PowerBI-Covid19-Dashboard1](https://github.com/ahmedkhaled00007/PowerBI-Covid19-Dashboard1)
+> Interactive Power BI dashboard visualizing key insights from the COVID-19 pandemic — including global and regional case trends.
+
+#### 🔢 [Dl-Handwritten-Digit-Sum-Scratch](https://github.com/ahmedkhaled00007/Dl-handwritten-digit-sum-scratch)
+> Deep learning model built from scratch using NumPy to predict the sum of two handwritten digits (MNIST) — with manual forward/backward propagation, gradient descent, and softmax.
+
 
 ---
 
