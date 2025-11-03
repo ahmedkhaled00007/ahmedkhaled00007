@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Ameen - Data Analyst GitHub Profile</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #0d1117, #161b22);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1.main-title {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #58a6ff, #8b949e);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .wave-emoji {
+            font-size: 2.5rem;
+            animation: wave 1.5s infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 15px auto;
+            border: 3px solid #58a6ff;
+            box-shadow: 0 0 15px #58a6ff33;
+        }
+
+        .profile-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .badge {
+            background: #21262d;
+            padding: 10px 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px #30363d;
+            transition: 0.3s;
+        }
+
+        .badge:hover {
+            background: #30363d;
+            transform: translateY(-3px);
+        }
+
+        .badge-number {
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .social-btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .whatsapp { background: #25d366; color: #fff; }
+        .linkedin { background: #0077b5; color: #fff; }
+        .gmail { background: #ea4335; color: #fff; }
+        .github { background: #24292f; color: #fff; }
+
+        .social-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .repos-section {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .repo-card {
+            background: #161b22;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #58a6ff;
+            transition: 0.3s;
+        }
+
+        .repo-card:hover {
+            transform: translateX(5px);
+            background: #1f242d;
+        }
+
+        a.repo-link {
+            text-decoration: none;
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        a.repo-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wave-emoji">👋</div>
+        <h1 class="main-title">Hi, I'm Ahmed Ameen</h1>
+
+        <img id="profile-img" class="profile-img" src="" alt="GitHub Profile Image">
+
+        <div class="profile-badges">
+            <div class="badge">👥 Followers: <span id="followers" class="badge-number">...</span></div>
+            <div class="badge">📦 Repos: <span id="repos" class="badge-number">...</span></div>
+            <div class="badge">⭐ Stars: <span id="stars" class="badge-number">...</span></div>
+        </div>
+
+        <div class="social-links">
+            <button class="social-btn whatsapp" onclick="window.open('https://wa.me/201282329726', '_blank')">💬 WhatsApp</button>
+            <button class="social-btn linkedin" onclick="window.open('https://www.linkedin.com/in/ahmed-ameen-003845303', '_blank')">💼 LinkedIn</button>
+            <button class="social-btn gmail" onclick="window.location.href='mailto:ahmedkhaledyt2005@gmail.com'">📧 Gmail</button>
+            <button class="social-btn github" onclick="window.open('https://github.com/ahmedkhaled00007', '_blank')">🧠 GitHub</button>
+        </div>
+
+        <div class="repos-section">
+            <h2>📌 Pinned Repositories</h2>
+            <div id="repos-container"></div>
+        </div>
+    </div>
+
+    <script>
+        const GITHUB_USERNAME = "ahmedkhaled00007"; // ✅ your GitHub username
+
+        async function fetchGitHubData() {
+            try {
+                // Fetch main user data
+                const userRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
+                const user = await userRes.json();
+
+                document.getElementById("profile-img").src = user.avatar_url;
+                document.getElementById("followers").textContent = user.followers;
+                document.getElementById("repos").textContent = user.public_repos;
+
+                // Fetch repositories for stars and pinned
+                const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`);
+                const repos = await reposRes.json();
+
+                // Total stars
+                const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+                document.getElementById("stars").textContent = totalStars;
+
+                // Show top 5 repos (sorted by stars)
+                const topRepos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 5);
+                const reposContainer = document.getElementById("repos-container");
+
+                topRepos.forEach(repo => {
+                    const repoCard = document.createElement("div");
+                    repoCard.className = "repo-card";
+                    repoCard.innerHTML = `
+                        <a class="repo-link" href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        <p>${repo.description || "No description provided."}</p>
+                        <small>⭐ ${repo.stargazers_count} | 🍴 ${repo.forks_count}</small>
+                    `;
+                    reposContainer.appendChild(repoCard);
+                });
+
+            } catch (error) {
+                console.error("Error fetching GitHub data:", error);
+            }
+        }
+
+        fetchGitHubData();
+    </script>
+</body>
+</html>
