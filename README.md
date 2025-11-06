@@ -1,10 +1,12 @@
 <h1 align="center">👋 Hi, I'm Ahmed Ameen</h1>
 <p align="center">
-  <img src="https://media.giphy.com/media/xT9C25UNTwfZuk85WP/giphy.gif" 
-       width="700" 
-       style="border-radius:10px; border:3px solid #58a6ff;" 
+  <img src="https://cdn.pixabay.com/animation/2025/04/05/10/44/10-44-27-197_512.gif"
+       width="400"
+       style="border-radius:10px; border:3px solid #58a6ff;"
        alt="AI and Data Analytics Banner" />
 </p>
+
+
 
 
 <p align="center">
