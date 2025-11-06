@@ -1,21 +1,25 @@
 <h1 align="center">👋 Hi, I'm Ahmed Ameen</h1>
-
 <p align="center">
-  <img src="https://avatars.githubusercontent.com/ahmedkhaled00007" width="150" height="150" style="border-radius:50%; border:3px solid #58a6ff;" />
+  <img src="https://media.giphy.com/media/xT9C25UNTwfZuk85WP/giphy.gif" 
+       width="700" 
+       style="border-radius:10px; border:3px solid #58a6ff;" 
+       alt="AI and Data Analytics Banner" />
 </p>
 
+
 <p align="center">
-  🎯 <b>Data Analyst | SQL | Power BI | Python | Machine Learning</b><br>
-  Building data-driven pipelines, visual dashboards, and predictive analytics solutions.
+     🎯 <b>Data Analyst | SQL | Power BI | Python | Machine Learning</b><br>
+  Building data-driven pipelines, visual dashboards, and predictive analytics solutions.<br><br>
+  <i>“Turning data into insight, and insight into impact.”</i>
 </p>
 
 ---
 
 ### 🧩 GitHub Stats
 <p align="center">
-  <img src="https://img.shields.io/badge/👥_Followers-{{followers}}-58a6ff?style=for-the-badge&color=21262d&labelColor=161b22" />
-  <img src="https://img.shields.io/badge/📦_Repos-{{repos}}-58a6ff?style=for-the-badge&color=21262d&labelColor=161b22" />
-  <img src="https://img.shields.io/badge/⭐_Stars-{{stars}}-58a6ff?style=for-the-badge&color=21262d&labelColor=161b22" />
+  <img src="https://img.shields.io/badge/👥_Followers-10-58a6ff?style=for-the-badge&color=21262d&labelColor=161b22" />
+  <img src="https://img.shields.io/badge/📦_Repos-8-58a6ff?style=for-the-badge&color=21262d&labelColor=161b22" />
+  <img src="https://img.shields.io/badge/⭐_Stars-5-58a6ff?style=for-the-badge&color=21262d&labelColor=161b22" />
 </p>
 
 ---
@@ -51,7 +55,6 @@
 
 #### 🔢 [Dl-Handwritten-Digit-Sum-Scratch](https://github.com/ahmedkhaled00007/Dl-handwritten-digit-sum-scratch)
 > Deep learning model built from scratch using NumPy to predict the sum of two handwritten digits (MNIST) — with manual forward/backward propagation, gradient descent, and softmax.
-
 
 ---
 
