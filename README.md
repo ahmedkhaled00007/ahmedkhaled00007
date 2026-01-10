@@ -10,9 +10,11 @@
 
 
 <p align="center">
-     🎯 <b>Data Analyst | SQL | Power BI | Python | Machine Learning</b><br>
-  Building data-driven pipelines, visual dashboards, and predictive analytics solutions.<br><br>
-  <i>“Turning data into insight, and insight into impact.”</i>
+     🎯 <b>Data Scientist | Data Analyst | AI & Computer Vision | Machine Learning & Deep Learning | Python | SQL | Power BI</b><br>
+  --------------------------------------------------------------------------------------------------------------------------------------------------------------
+   Data Scientist with expertise in AI, Machine Learning, Deep Learning,
+          and Computer Vision. Skilled in Python, SQL, and Power BI, with a strong focus on 
+          data-driven decision-making and real-world AI applications.”</i>
 </p>
 
 ---
