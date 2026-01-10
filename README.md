@@ -11,7 +11,7 @@
 
 <p align="center">
      🎯 <b>Data Scientist | Data Analyst | AI & Computer Vision | Machine Learning & Deep Learning | Python | SQL | Power BI</b><br>
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------------------------------------------------------------------------------
    Data Scientist with expertise in AI, Machine Learning, Deep Learning,
           and Computer Vision. Skilled in Python, SQL, and Power BI, with a strong focus on 
           data-driven decision-making and real-world AI applications.”</i>
